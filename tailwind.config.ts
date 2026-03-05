@@ -8,59 +8,64 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-manrope)", "sans-serif"],
+      },
       colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0F172A", // Slate 900
-          foreground: "#FFFFFF",
+          DEFAULT: "#0F172A",
+          foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#334155", // Slate 700
-          foreground: "#F8FAFC",
+          DEFAULT: "#334155",
+          foreground: "#ffffff",
         },
         accent: {
-          DEFAULT: "#2563EB", // Royal Blue
-          foreground: "#FFFFFF",
-          hover: "#1D4ED8",
+          DEFAULT: "#2563EB",
+          foreground: "#ffffff",
         },
-        highlight: {
-          DEFAULT: "#F59E0B", // Amber 500
+        muted: {
+          DEFAULT: "#f1f5f9",
+          foreground: "#0f172a",
         },
-        background: "#F8FAFC", // Slate 50
-        surface: "#FFFFFF",
-        text: {
-          DEFAULT: "#020617", // Slate 950
-          muted: "#64748B", // Slate 500
+        card: {
+          DEFAULT: "#ffffff",
+          foreground: "#020617",
         },
-      },
-      fontFamily: {
-        heading: ["var(--font-heading)", "sans-serif"],
-        body: ["var(--font-body)", "sans-serif"],
-      },
-      spacing: {
-        section: "120px",
       },
       borderRadius: {
-        lg: "0.5rem",
-        xl: "0.75rem",
-        "2xl": "1rem",
-      },
-      boxShadow: {
-        card: "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)",
-        hover: "0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)",
-        modal: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-      },
-      animation: {
-        "fade-up": "fadeUp 0.7s ease-out",
-        "bounce-slow": "bounce 3s infinite",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
+        "slide-in-from-bottom": {
+          "0%": { transform: "translateY(20px)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        "zoom-in": {
+          "0%": { transform: "scale(0.95)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        }
+      },
+      animation: {
+        "fade-in": "fade-in 1s ease-out",
+        "slide-in-from-bottom": "slide-in-from-bottom 1s ease-out",
+        "zoom-in-95": "zoom-in 0.8s ease-out",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [],
 };
+
 export default config;

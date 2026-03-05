@@ -9,91 +9,99 @@
 // to edit to swap any image on the entire website.
 
 export const images = {
-  // Homepage hero banner — Luxury vehicle front view
+  // Homepage hero banner — Luxury Tesla/Porsche on clean background
   "hero": {
-    src: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1600&auto=format&fit=crop",
-    alt: "Porsche 911 front view in luxury setting",
-    width: 1600,
-    height: 900,
-  },
-
-  // About page hero — Shop floor detail
-  "about-hero": {
-    src: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1600&auto=format&fit=crop",
-    alt: "Clean automotive workshop floor",
-    width: 1600,
-    height: 900,
-  },
-
-  // Founder portrait
-  "founder": {
-    src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
-    alt: "Portrait of Elite Auto Styling founder",
-    width: 800,
+    src: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop",
+    alt: "Black luxury Tesla Model S with ceramic coating in a pristine studio",
+    width: 1200,
     height: 800,
   },
 
-  // Service: Ceramic Coating
-  "service-ceramic": {
-    src: "https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=800&auto=format&fit=crop",
-    alt: "Car paint being polished for ceramic coating",
-    width: 800,
-    height: 600,
+  // Alternative hero image
+  "hero-alt": {
+    src: "https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2070&auto=format&fit=crop",
+    alt: "Detailing spray bottle and microfiber towel on a car hood",
+    width: 1200,
+    height: 800,
   },
 
-  // Service: PPF
-  "service-ppf": {
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop",
-    alt: "Paint protection film application on hood",
-    width: 800,
-    height: 600,
+  // About page or About section — Team working
+  "about": {
+    src: "https://images.unsplash.com/photo-1629813295961-72108ade53c9?q=80&w=2070&auto=format&fit=crop",
+    alt: "Professional auto detailer polishing a vehicle headlight",
+    width: 1200,
+    height: 800,
   },
 
-  // Service: Window Tinting
-  "service-tint": {
-    src: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop",
-    alt: "Car window tinting in progress",
-    width: 800,
-    height: 600,
+  // Service 1: Ceramic Coating
+  "service-1": {
+    src: "https://images.unsplash.com/photo-1632282218445-3e1a80c1d5b5?q=80&w=2070&auto=format&fit=crop",
+    alt: "Water beading on a ceramic coated car hood",
+    width: 1200,
+    height: 800,
   },
 
-  // Service: Interior Detailing
-  "service-interior": {
-    src: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop",
-    alt: "Luxury car leather interior cleaning",
-    width: 800,
-    height: 600,
+  // Service 2: PPF / Paint Protection
+  "service-2": {
+    src: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop",
+    alt: "Close up of Paint Protection Film application",
+    width: 1200,
+    height: 800,
   },
 
-  // Gallery: Before (Swirl marks)
-  "gallery-before-1": {
-    src: "https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=800&auto=format&fit=crop",
-    alt: "Car paint with swirl marks before correction",
-    width: 800,
-    height: 600,
+  // Service 3: Window Tinting
+  "service-3": {
+    src: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop",
+    alt: "Luxury car with window tinting",
+    width: 1200,
+    height: 800,
   },
 
-  // Gallery: After (Glossy)
-  "gallery-after-1": {
-    src: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop",
-    alt: "Car paint after correction and coating",
-    width: 800,
-    height: 600,
+  // Gallery 1: Before/After or Showcase
+  "gallery-1": {
+    src: "https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=2069&auto=format&fit=crop",
+    alt: "Ferrari red luxury sports car detailing",
+    width: 1200,
+    height: 800,
   },
-  
-  // Gallery: Tesla Model 3
-  "gallery-tesla": {
-    src: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=800&auto=format&fit=crop",
-    alt: "Tesla Model 3 with ceramic coating",
-    width: 800,
-    height: 600,
+
+  // Gallery 2
+  "gallery-2": {
+    src: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop",
+    alt: "Porsche 911 Carrera detailed interior",
+    width: 1200,
+    height: 800,
+  },
+
+  // Gallery 3
+  "gallery-3": {
+    src: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2070&auto=format&fit=crop",
+    alt: "Blue metallic luxury car exterior after polish",
+    width: 1200,
+    height: 800,
   },
 
   // CTA Background
   "cta": {
-    src: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop",
-    alt: "Sports car on road at sunset",
-    width: 1600,
+    src: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2066&auto=format&fit=crop",
+    alt: "Aston Martin DB11 on the road at sunset",
+    width: 1200,
+    height: 800,
+  },
+
+  // Testimonial Background
+  "testimonial-bg": {
+    src: "https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=2070&auto=format&fit=crop",
+    alt: "Garage with luxury cars and organized tools",
+    width: 1200,
+    height: 800,
+  },
+  
+  // Founder/Team
+  "founder": {
+    src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2070&auto=format&fit=crop",
+    alt: "Portrait of the Elite Auto Styling founder",
+    width: 600,
     height: 600,
   }
 } as const;

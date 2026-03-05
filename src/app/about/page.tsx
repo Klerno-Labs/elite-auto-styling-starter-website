@@ -1,93 +1,92 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { CheckCircle2, Award, Users } from "lucide-react";
+import { Award, Users, Zap } from "lucide-react";
+import Section from "@/components/ui/section";
 import { images } from "@/config/images";
 
 export const metadata: Metadata = {
-  title: "About | Elite Auto Styling",
-  description: "Learn about Elite Auto Styling's mission, team, and certifications. Austin's trusted detailers.",
+  title: "About Us | Elite Auto Styling",
+  description: "Meet the team behind Austin's premier auto detailing studio. Learn about our passion for perfection and commitment to quality.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="pt-8">
-      <section className="relative h-[60vh] flex items-center justify-center text-white">
+    <div>
+      {/* Hero */}
+      <section className="relative h-[50vh] flex items-center justify-center bg-slate-900">
         <Image
-          src={images["about-hero"].src}
-          alt={images["about-hero"].alt}
+          src={images["about"].src}
+          alt="Workshop background"
           fill
-          className="object-cover"
+          className="object-cover opacity-40"
+          priority
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-slate-900/60" />
-        <div className="relative z-10 text-center max-w-4xl px-4">
-          <h1 className="text-4xl sm:text-6xl font-heading font-bold mb-6">Obsessed with Perfection</h1>
-          <p className="text-xl text-slate-200">We don&apos;t just clean cars; we restore them to showroom condition.</p>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">Obsessed with Perfection</h1>
+          <p className="text-slate-200 text-lg max-w-2xl mx-auto">
+            We don't just clean cars; we restore them to factory perfection and protect them for the future.
+          </p>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <Image
-                src={images.founder.src}
-                alt={images.founder.alt}
-                width={600}
-                height={600}
-                className="rounded-2xl shadow-xl"
-              />
-            </div>
-            <div className="space-y-6">
-              <h2 className="text-3xl font-heading font-bold text-slate-900">Our Story</h2>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                Elite Auto Styling was founded on a simple premise: luxury vehicles require luxury care. We noticed a gap in the Austin market for a detailer that truly understood the nuances of high-end paint systems and exotic materials.
-              </p>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                Every member of our team is certified in top-tier protection films and ceramic technologies. We invest heavily in the best equipment and products because your vehicle deserves nothing less.
-              </p>
-              <div className="pt-4 flex items-center space-x-4">
-                <Award className="text-blue-600 w-8 h-8" />
-                <span className="font-bold text-slate-900 text-lg">Certified 3M & Xpel Installers</span>
-              </div>
-            </div>
+      {/* Story */}
+      <Section>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1">
+            <Image
+              src={images["founder"].src}
+              alt="Founder"
+              width={500}
+              height={500}
+              className="rounded-2xl shadow-lg w-full"
+            />
+          </div>
+          <div className="order-1 md:order-2">
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-xs block mb-2">Our Story</span>
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">Founded on Passion</h2>
+            <p className="text-slate-600 leading-relaxed mb-4">
+              Elite Auto Styling was born from a simple observation: Austin's car enthusiasts deserved better than the average detail shop. Too many shops used aggressive buffers that burned paint, cheap wax that washed off in a week, and had no respect for the vehicle's finish.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              We set out to change that. By investing in the best training from 3M and XPEL, sourcing the finest ceramic compounds, and adhering to strict "no shortcuts" protocols, we've built a reputation as the go-to shop for owners of Teslas, Porsches, Ferraris, and daily drivers who simply want the best.
+            </p>
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">Why Choose Us?</h2>
+      {/* Values */}
+      <Section background="slate">
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="p-6">
+            <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Award className="w-8 h-8" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Certified Experts</h3>
+            <p className="text-slate-600">
+              Our technicians are certified by top manufacturers in PPF installation and ceramic coating application.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Certified Experts",
-                desc: "Our technicians hold manufacturer certifications from Xpel, 3M, and Gtechniq.",
-                icon: <Award className="w-8 h-8" />
-              },
-              {
-                title: "Customer Focused",
-                desc: "We offer transparent pricing, detailed photo updates, and satisfaction guarantees.",
-                icon: <Users className="w-8 h-8" />
-              },
-              {
-                title: "Quality Guaranteed",
-                desc: "We use only the best products and stand behind our work with comprehensive warranties.",
-                icon: <CheckCircle2 className="w-8 h-8" />
-              }
-            ].map((feature, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm text-center">
-                <div className="bg-blue-50 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                <p className="text-slate-600">{feature.desc}</p>
-              </div>
-            ))}
+          <div className="p-6">
+            <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Users className="w-8 h-8" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Customer First</h3>
+            <p className="text-slate-600">
+              We believe in transparency. You'll always know what we're doing, why we're doing it, and exactly how much it costs.
+            </p>
+          </div>
+          <div className="p-6">
+            <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Zap className="w-8 h-8" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Cutting Edge</h3>
+            <p className="text-slate-600">
+              We stay ahead of the curve with the latest technologies in paint protection and surface chemistry.
+            </p>
           </div>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }
