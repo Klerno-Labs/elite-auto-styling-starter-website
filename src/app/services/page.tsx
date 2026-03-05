@@ -1,129 +1,52 @@
 import { Metadata } from "next";
+import ServicesGrid from "@/components/sections/services-grid";
+import CtaBand from "@/components/sections/cta-band";
 import SectionWrapper from "@/components/layout/section-wrapper";
-import { siteConfig } from "@/config/site";
-import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
-import { images } from "@/config/images";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "Explore our range of auto detailing services including Ceramic Coating, PPF, and Window Tinting.",
+  title: "Services | Elite Auto Styling",
+  description: "Explore our range of premium auto detailing services including Ceramic Coating, PPF, Window Tinting, and more in Austin, TX.",
 };
 
 export default function ServicesPage() {
   return (
     <>
-      <SectionWrapper className="pt-32 pb-16">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-6">
-            Our Services
-          </h1>
-          <p className="text-xl text-slate-600">
-            Comprehensive protection and restoration packages tailored to your vehicle's needs.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-          {/* Service 1: Ceramic Coating */}
-          <div className="group">
-            <div className="relative rounded-xl overflow-hidden mb-6 aspect-video">
-               <Image src={images.service-1.src} alt="Ceramic Coating" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+      <section className="bg-slate-900 pt-32 pb-20 text-center">
+        <h1 className="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">
+          Our Services
+        </h1>
+        <p className="text-slate-300 max-w-2xl mx-auto text-lg px-4">
+          Comprehensive care for every inch of your vehicle. From paint protection to interior restoration, we have you covered.
+        </p>
+      </section>
+      
+      <ServicesGrid />
+      <SectionWrapper className="bg-white">
+        <div className="max-w-4xl mx-auto prose prose-lg prose-slate">
+          <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-bold text-slate-900">How long does a ceramic coating last?</h3>
+              <p className="text-slate-600 mt-2">
+                With proper maintenance, our professional-grade ceramic coatings can last anywhere from 2 to 5 years depending on the package selected and how the vehicle is cared for.
+              </p>
             </div>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-slate-900">Ceramic Coating</h2>
-              <Badge variant="secondary" className="text-base px-3 py-1">$800-$2500</Badge>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900">Do you offer mobile detailing?</h3>
+              <p className="text-slate-600 mt-2">
+                Yes, we offer mobile detailing for wash and wax, interior cleaning, and maintenance details. However, for paint correction, ceramic coating, and PPF installation, we require the vehicle to be brought to our climate-controlled facility to ensure a dust-free environment.
+              </p>
             </div>
-            <p className="text-slate-600 mb-6">
-              The ultimate in paint protection. Our ceramic coatings form a permanent bond with your factory paint, creating a layer of protection that is hydrophobic, resistant to UV rays, and incredibly glossy.
-            </p>
-            <ul className="space-y-2 mb-8">
-              {["Hyper-gloss finish", "Chemical resistance", "Ease of washing"].map((item, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-primary" /> {item}
-                </li>
-              ))}
-            </ul>
-            <Link href="/contact">
-              <Button variant="outline" className="w-full">Get Quote</Button>
-            </Link>
-          </div>
-
-          {/* Service 2: PPF */}
-          <div className="group">
-            <div className="relative rounded-xl overflow-hidden mb-6 aspect-video">
-               <Image src={images.service-2.src} alt="Paint Protection Film" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div>
+              <h3 className="text-xl font-bold text-slate-900">What is the difference between PPF and Ceramic Coating?</h3>
+              <p className="text-slate-600 mt-2">
+                Paint Protection Film (PPF) is a physical urethane layer that protects against rock chips and scratches. Ceramic Coating is a chemical liquid polymer that bonds to the paint to protect against UV damage, chemical etching, and dirt while adding extreme gloss. For maximum protection, we recommend doing both.
+              </p>
             </div>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-slate-900">Paint Protection Film (PPF)</h2>
-              <Badge variant="secondary" className="text-base px-3 py-1">$1500-$5000</Badge>
-            </div>
-            <p className="text-slate-600 mb-6">
-              Invisible armor for your vehicle. We use high-grade self-healing urethane film to protect high-impact areas from rock chips, road debris, and minor scratches.
-            </p>
-            <ul className="space-y-2 mb-8">
-              {["Self-healing technology", "Impact resistance", "Invisible protection"].map((item, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-primary" /> {item}
-                </li>
-              ))}
-            </ul>
-            <Link href="/contact">
-              <Button variant="outline" className="w-full">Get Quote</Button>
-            </Link>
-          </div>
-
-          {/* Service 3: Window Tint */}
-          <div className="group">
-            <div className="relative rounded-xl overflow-hidden mb-6 aspect-video">
-               <Image src={images.service-3.src} alt="Window Tinting" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-slate-900">Window Tinting</h2>
-              <Badge variant="secondary" className="text-base px-3 py-1">$200-$500</Badge>
-            </div>
-            <p className="text-slate-600 mb-6">
-              Enhance privacy and reduce heat with our premium automotive window films. We carry a variety of shades to meet Texas legal requirements while improving aesthetics.
-            </p>
-            <ul className="space-y-2 mb-8">
-              {["Heat rejection", "UV protection", "Clean install warranty"].map((item, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-primary" /> {item}
-                </li>
-              ))}
-            </ul>
-            <Link href="/contact">
-              <Button variant="outline" className="w-full">Get Quote</Button>
-            </Link>
-          </div>
-
-          {/* Service 4: Interior Detail */}
-          <div className="group">
-            <div className="relative rounded-xl overflow-hidden mb-6 aspect-video">
-               <Image src={images.service-4.src} alt="Interior Detailing" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-slate-900">Interior Detailing</h2>
-              <Badge variant="secondary" className="text-base px-3 py-1">$150-$300</Badge>
-            </div>
-            <p className="text-slate-600 mb-6">
-              Restore your cabin to a fresh, sanitary state. We deep clean carpets, leather, plastics, and vents, removing stains and odors for a like-new experience.
-            </p>
-            <ul className="space-y-2 mb-8">
-              {["Leather conditioning", "Steam cleaning", "Odor removal"].map((item, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-primary" /> {item}
-                </li>
-              ))}
-            </ul>
-            <Link href="/contact">
-              <Button variant="outline" className="w-full">Get Quote</Button>
-            </Link>
           </div>
         </div>
       </SectionWrapper>
+      <CtaBand />
     </>
   );
 }

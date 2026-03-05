@@ -1,120 +1,110 @@
 import { Metadata } from "next";
-import SectionWrapper from "@/components/layout/section-wrapper";
 import Image from "next/image";
+import { ShieldCheck, Award, Users } from "lucide-react";
 import { images } from "@/config/images";
-import { CheckCircle, Award, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import SectionWrapper from "@/components/layout/section-wrapper";
+import CtaBand from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about Elite Auto Styling's history, team, and certifications in Austin, TX.",
+  title: "About Us | Elite Auto Styling",
+  description: "Learn more about Elite Auto Styling's history, certifications, and commitment to perfection in Austin, TX.",
 };
 
 export default function AboutPage() {
   return (
     <>
-      <div className="relative bg-secondary py-32 md:py-48">
-        <div className="absolute inset-0">
+      {/* About Hero */}
+      <section className="relative pt-32 pb-20 bg-primary overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <Image
             src={images.about.src}
             alt={images.about.alt}
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-20"
             priority
           />
         </div>
-        <div className="container-custom relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white tracking-tight mb-6">
             Obsessed with Perfection
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Founded by enthusiasts, for enthusiasts. We treat every vehicle as if it were our own.
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            Founded in Austin, Elite Auto Styling was built on a simple premise: every vehicle deserves to look its absolute best, and protection is just as important as aesthetics.
           </p>
         </div>
-      </div>
+      </section>
 
+      {/* Story Section */}
       <SectionWrapper>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
             <h2 className="text-3xl font-heading font-bold text-slate-900 mb-6">
-              Our Story
+              Why Choose Elite?
             </h2>
-            <p className="text-slate-600 mb-4 leading-relaxed">
-              Elite Auto Styling was born from a simple observation: most detailers in Austin treated car care like a commodity—a quick wash, a wax, and out the door. We knew there was a better way, especially for owners of luxury, exotic, and electric vehicles who demand precision.
-            </p>
             <p className="text-slate-600 mb-6 leading-relaxed">
-              Today, our studio is equipped with state-of-the-art lighting, controlled environment bays, and certified installers for top-tier products like Xpel and Ceramic Pro. We don't just clean cars; we restore and protect automotive investments.
+              We understand that your vehicle is more than just a mode of transportation—it's an investment and a passion. That's why we approach every job with the precision of an engineer and the care of an enthusiast.
             </p>
-            
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              <div className="flex items-start gap-3">
-                <Award className="text-primary h-6 w-6 shrink-0" />
-                <div>
-                  <h4 className="font-bold text-slate-900">Certified</h4>
-                  <p className="text-sm text-slate-500">Factory trained installers</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Users className="text-primary h-6 w-6 shrink-0" />
-                <div>
-                  <h4 className="font-bold text-slate-900">Experienced</h4>
-                  <p className="text-sm text-slate-500">Years of luxury auto care</p>
-                </div>
-              </div>
-            </div>
-
-            <Link href="/contact">
-              <Button>Work With Us</Button>
-            </Link>
+            <p className="text-slate-600 mb-8 leading-relaxed">
+              Unlike standard car washes that use harsh brushes and generic chemicals, we utilize premium-grade products and techniques safe for all paint types, including the sensitive matte finishes and ceramic paints found on modern supercars.
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Certified installers for XPEL and 3M films",
+                "Climate-controlled indoor facility",
+                "Specialized in Tesla and exotic vehicles",
+                "100% satisfaction guarantee",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-slate-700">
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          
-          <div className="order-1 lg:order-2 relative rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              src={images.service-1.src}
-              alt="Team working on car"
-              width={800}
-              height={600}
-              className="object-cover w-full h-full"
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+             <Image
+              src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1200&h=800&fit=crop"
+              alt="Detailer working on car"
+              width={600}
+              height={800}
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
       </SectionWrapper>
 
+      {/* Stats/Values */}
       <SectionWrapper className="bg-slate-50">
-        <h2 className="text-3xl font-heading font-bold text-slate-900 text-center mb-12">
-          Why Choose Elite?
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="bg-white p-8 rounded-xl shadow-sm">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mb-6">
-              <CheckCircle className="h-6 w-6" />
+            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Award className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Precision Detailing</h3>
-            <p className="text-slate-600">
-              We use measured lighting and paint depth gauges to ensure safe correction without compromising clear coat thickness.
-            </p>
+            <h3 className="text-3xl font-bold text-slate-900 mb-2">5+ Years</h3>
+            <p className="text-slate-600">Serving the Austin Community</p>
           </div>
           <div className="bg-white p-8 rounded-xl shadow-sm">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mb-6">
-              <CheckCircle className="h-6 w-6" />
+            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Users className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Premium Products</h3>
-            <p className="text-slate-600">
-              We only use industry-leading films, coatings, and compounds that deliver proven longevity and gloss.
-            </p>
+            <h3 className="text-3xl font-bold text-slate-900 mb-2">2,500+</h3>
+            <p className="text-slate-600">Vehicles Protected</p>
           </div>
           <div className="bg-white p-8 rounded-xl shadow-sm">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mb-6">
-              <CheckCircle className="h-6 w-6" />
+            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <ShieldCheck className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Customer Education</h3>
-            <p className="text-slate-600">
-              We walk you through the process and provide maintenance tips so you can enjoy that showroom shine for years.
-            </p>
+            <h3 className="text-3xl font-bold text-slate-900 mb-2">100%</h3>
+            <p className="text-slate-600">Certified Technicians</p>
           </div>
         </div>
       </SectionWrapper>
+
+      <CtaBand />
     </>
   );
 }

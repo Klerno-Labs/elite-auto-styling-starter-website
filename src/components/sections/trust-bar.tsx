@@ -1,31 +1,33 @@
-import { CheckCircle, Shield, Star } from "lucide-react";
-import { siteConfig } from "@/config/site";
+"use client";
+
+import { motion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
+
+const items = [
+  "Tesla & EV Specialists",
+  "Xpel & 3M Certified Installers",
+  "Satisfaction Guaranteed",
+  "Mobile Service Available",
+];
 
 export default function TrustBar() {
   return (
-    <section className="bg-white border-y border-slate-100 py-8">
-      <div className="container-custom">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-center">
-          <div className="flex items-center gap-3">
-            <Star className="text-accent fill-accent h-6 w-6" />
-            <span className="font-semibold text-slate-900">
-              5-Star Rated Service
-            </span>
-          </div>
-          
-          <div className="flex items-center gap-3">
-            <Shield className="text-primary h-6 w-6" />
-            <span className="font-semibold text-slate-900">
-              Certified Installers
-            </span>
-          </div>
-          
-          <div className="flex items-center gap-3">
-            <CheckCircle className="text-green-600 h-6 w-6" />
-            <span className="font-semibold text-slate-900">
-              Satisfaction Guaranteed
-            </span>
-          </div>
+    <section className="border-y border-slate-200 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex flex-wrap justify-center gap-6 md:gap-12">
+          {items.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="flex items-center gap-2 text-slate-700 font-medium text-sm md:text-base"
+            >
+              <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+              {item}
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

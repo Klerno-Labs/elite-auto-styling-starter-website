@@ -1,54 +1,42 @@
 import type { Metadata } from "next";
 import { headingFont, bodyFont } from "@/lib/fonts";
 import "./globals.css";
-import { siteConfig } from "@/config/site";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
-import Script from "next/script";
+
+const metadataBase = new URL("https://eliteautostyling.com");
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase,
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    default: "Elite Auto Styling | Premier Auto Detailing in Austin",
+    template: "%s | Elite Auto Styling"
   },
-  description: siteConfig.description,
-  keywords: [
-    "Auto Detailing Austin",
-    "Ceramic Coating Austin",
-    "Paint Protection Film Austin",
-    "Window Tinting Austin",
-    "Tesla Detailing",
-    "Luxury Car Detailing",
-    "PPF Austin TX",
-  ],
-  authors: [{ name: siteConfig.name }],
-  creator: siteConfig.name,
+  description: "Austin's premier automotive detailing and paint protection studio. Specializing in ceramic coatings, PPF, window tinting, and full interior/exterior detailing for luxury and exotic vehicles.",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    url: "https://eliteautostyling.com",
+    siteName: "Elite Auto Styling",
+    title: "Elite Auto Styling | Premier Auto Detailing in Austin",
+    description: "Preserving the beauty of your investment with world-class ceramic coating and PPF services in Austin, TX.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=1200&h=630&fit=crop",
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: "Elite Auto Styling Workshop",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: ["/og-image.jpg"],
-    creator: "@eliteautostyling",
+    title: "Elite Auto Styling | Premier Auto Detailing in Austin",
+    description: "Ceramic coatings, PPF, and detailing for luxury vehicles in Austin, TX.",
   },
-  icons: {
-    icon: "/favicon.ico",
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -59,22 +47,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
-      <body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className="flex min-h-screen flex-col">
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
-        <Script
+        <script
           type="application/ld+json"
-          id="json-ld"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "AutoBodyShop",
-              name: siteConfig.name,
-              image: "https://eliteautostyling.com/logo.png",
-              "@id": "https://eliteautostyling.com",
-              url: "https://eliteautostyling.com",
-              telephone: siteConfig.contact.phone,
+              "@type": "AutoRepair",
+              name: "Elite Auto Styling",
+              image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=1200&h=800&fit=crop",
+              telephone: "(512) 333-9104",
+              email: "contact@eliteautostyling.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "8901 Research Blvd, Suite 240",
@@ -85,9 +75,11 @@ export default function RootLayout({
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: 30.3658,
-                longitude: -97.7137,
+                latitude: 30.3645,
+                longitude: -97.7102,
               },
+              url: "https://eliteautostyling.com",
+              priceRange: "$$",
               openingHoursSpecification: [
                 {
                   "@type": "OpeningHoursSpecification",
@@ -100,9 +92,9 @@ export default function RootLayout({
                   dayOfWeek: "Sunday",
                   opens: "00:00",
                   closes: "00:00",
+                  description: "By Appointment Only",
                 },
               ],
-              priceRange: "$$",
             }),
           }}
         />

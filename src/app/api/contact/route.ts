@@ -1,50 +1,46 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
+import type { NextRequest } from "next/server";
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number is required"),
-  vehicle: z.string().optional(),
-  service: z.string().optional(),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-  _gotcha: z.string().optional(), // Honeypot
-});
-
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const body = await req.json();
-    
-    // Server-side validation
-    const result = contactSchema.safeParse(body);
-    
-    if (!result.success) {
+    const body = await request.json();
+    const { name, email, phone, vehicle, service, message, _gotcha } = body;
+
+    // Honeypot check
+    if (_gotcha) {
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+
+    // Basic validation
+    if (!name || !email || !phone) {
       return NextResponse.json(
-        { error: "Invalid data", details: result.error.flatten().fieldErrors },
+        { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    const { _gotcha, ...data } = result.data;
+    // In a real environment, you would send an email here via Resend, SendGrid, or Nodemailer
+    // For this demo, we will simulate a successful API call
+    console.log("Form Submission Received:", {
+      name,
+      email,
+      phone,
+      vehicle,
+      service,
+      message,
+    });
 
-    // Honeypot check
-    if (_gotcha) {
-      // Silently succeed to fool bots
-      return NextResponse.json({ success: true });
-    }
-
-    // In a real production app, you would send an email here using Nodemailer, Resend, SendGrid, etc.
-    // For this build, we will simulate the success state after a slight delay.
-    console.log("Received form submission:", data);
-    
-    // Simulate email service delay
+    // Simulate delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    return NextResponse.json({ success: true, message: "Message sent successfully" });
+    return NextResponse.json(
+      { success: true, message: "Message sent successfully!" },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Internal Server Error" },
       { status: 500 }
     );
   }

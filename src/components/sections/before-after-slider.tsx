@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import { images } from "@/config/images";
 import { cn } from "@/lib/utils";
 
@@ -9,91 +11,121 @@ export default function BeforeAfterSlider() {
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleMove = (clientX: number) => {
+  const handleMove = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
+    const x = clientX - containerRect.left;
+    const percentage = Math.max(0, Math.min(100, (x / containerRect.width) * 100));
     setSliderPosition(percentage);
   };
 
   const handleMouseDown = () => setIsDragging(true);
   const handleMouseUp = () => setIsDragging(false);
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) handleMove(e.clientX);
-  };
+  const handleTouchStart = () => setIsDragging(true);
+  const handleTouchEnd = () => setIsDragging(false);
 
-  useEffect(() => {
-    const handleGlobalMouseUp = () => setIsDragging(false);
-    const handleGlobalMouseMove = (e: MouseEvent) => {
-      if (isDragging) handleMove(e.clientX);
-    };
-
-    window.addEventListener("mouseup", handleGlobalMouseUp);
-    window.addEventListener("mousemove", handleGlobalMouseMove);
-
-    return () => {
-      window.removeEventListener("mouseup", handleGlobalMouseUp);
-      window.removeEventListener("mousemove", handleGlobalMouseMove);
-    };
-  }, [isDragging]);
+  // Using generic high-contrast images for demo
+  const beforeImage = "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&h=800&fit=crop"; // Duller interior
+  const afterImage = images.service3.src; // Shiny interior
 
   return (
-    <div className="rounded-2xl overflow-hidden shadow-xl relative aspect-video cursor-ew-resize select-none group"
-         ref={containerRef}
-         onMouseDown={handleMouseDown}
-         onMouseMove={handleMouseMove}
-         onMouseUp={handleMouseUp}
-    >
-      {/* After Image (Background) */}
-      <div className="absolute inset-0 w-full h-full">
-         <img 
-           src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1200&auto=format&fit=crop" // Clean car
-           alt="After detailing" 
-           className="w-full h-full object-cover"
-         />
-         <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider z-10">
-           After
-         </div>
-      </div>
-
-      {/* Before Image (Clipped) */}
-      <div 
-        className="absolute inset-0 h-full overflow-hidden"
-        style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-      >
-        <img 
-           src="https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1200&auto=format&fit=crop" // Dirty car
-           alt="Before detailing" 
-           className="w-full h-full object-cover object-left"
-        />
-        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider z-10">
-           Before
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-accent font-bold uppercase tracking-wider text-sm">See The Difference</span>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-4">
+            Before & After Gallery
+          </h2>
+          <p className="text-slate-600">
+            Drag the slider to see the transformation our detailing services provide.
+          </p>
         </div>
-      </div>
 
-      {/* Slider Line */}
-      <div 
-        className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-20 pointer-events-none"
-        style={{ left: `${sliderPosition}%` }}
-      >
-        {/* Handle Circle */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center text-slate-900">
-           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-             <polyline points="15 18 9 12 15 6"></polyline>
-           </svg>
-           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-ml-4">
-             <polyline points="9 18 15 12 9 6"></polyline>
-           </svg>
-        </div>
-      </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative w-full max-w-4xl mx-auto aspect-[16/9] md:aspect-[2/1] rounded-xl overflow-hidden shadow-xl border border-slate-200 group cursor-ew-resize select-none"
+          ref={containerRef}
+          onMouseMove={handleMove}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onTouchMove={handleMove}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Before Image (Background) */}
+          <div className="absolute inset-0">
+            <Image
+              src={beforeImage}
+              alt="Before detailing"
+              fill
+              className="object-cover filter brightness-90 contrast-90"
+            />
+            <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded-md text-sm font-semibold backdrop-blur-sm">
+              Before
+            </div>
+          </div>
 
-      {/* Hover Overlay Instruction */}
-      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-        <p className="text-white font-bold tracking-widest uppercase text-sm bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm">
-          Drag to compare
-        </p>
+          {/* After Image (Overlay with Clip Path) */}
+          <div
+            className="absolute inset-0"
+            style={{
+              clipPath: `inset(0 0 0 ${sliderPosition}%)`,
+            }}
+          >
+            <Image
+              src={afterImage}
+              alt="After detailing"
+              fill
+              className="object-cover"
+            />
+             <div className="absolute top-4 right-4 bg-accent/90 text-white px-3 py-1 rounded-md text-sm font-semibold backdrop-blur-sm">
+              After
+            </div>
+          </div>
+
+          {/* Slider Handle */}
+          <div
+            className="absolute top-0 bottom-0 w-1 bg-white shadow-lg pointer-events-none flex items-center justify-center z-20"
+            style={{ left: `${sliderPosition}%` }}
+          >
+            <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-800">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-slate-800"
+              >
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-slate-800"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

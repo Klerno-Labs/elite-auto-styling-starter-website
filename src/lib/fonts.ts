@@ -2,12 +2,12 @@ import { Manrope, Inter } from "next/font/google";
 
 export const headingFont = Manrope({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-heading",
   display: "swap",
 });
 
 export const bodyFont = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap",
 });

@@ -1,32 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
-
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  vehicle: string;
-  service: string;
-  message: string;
-  _gotcha: string;
-}
+import { motion } from "framer-motion";
+import { CheckCircle2, Loader2 } from "lucide-react";
+import Button from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState<FormData>({
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     vehicle: "",
     service: "",
     message: "",
-    _gotcha: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,7 +24,8 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
+    setIsSubmitting(true);
+    setIsSuccess(false);
 
     try {
       const res = await fetch("/api/contact", {
@@ -44,138 +35,172 @@ export default function ContactForm() {
       });
 
       if (res.ok) {
-        setStatus("success");
+        setIsSuccess(true);
         setFormData({
-          name: "", email: "", phone: "", vehicle: "", service: "", message: "", _gotcha: ""
+          name: "",
+          email: "",
+          phone: "",
+          vehicle: "",
+          service: "",
+          message: "",
         });
       } else {
-        setStatus("error");
+        alert("Something went wrong. Please try again.");
       }
-    } catch {
-      setStatus("error");
+    } catch (error) {
+      console.error(error);
+      alert("Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  if (status === "success") {
-    return (
-      <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <CheckCircle2 className="text-green-600 w-8 h-8" />
-        </div>
-        <h3 className="text-xl font-bold text-green-900 mb-2">Message Sent!</h3>
-        <p className="text-green-700">Thank you for contacting us. We'll be in touch within 24 hours.</p>
-      </div>
-    );
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-semibold text-slate-700">Full Name *</label>
-          <Input 
-            id="name" 
-            name="name" 
-            required 
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="John Doe" 
-          />
-        </div>
-        <div className="space-y-2">
-          <label htmlFor="phone" className="text-sm font-semibold text-slate-700">Phone Number *</label>
-          <Input 
-            id="phone" 
-            name="phone" 
-            type="tel"
-            required 
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="(512) 555-0123" 
-          />
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <label htmlFor="email" className="text-sm font-semibold text-slate-700">Email Address *</label>
-        <Input 
-          id="email" 
-          name="email" 
-          type="email" 
-          required 
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="john@example.com" 
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <label htmlFor="vehicle" className="text-sm font-semibold text-slate-700">Vehicle Make/Model</label>
-          <Input 
-            id="vehicle" 
-            name="vehicle"
-            value={formData.vehicle}
-            onChange={handleChange}
-            placeholder="e.g. Tesla Model 3" 
-          />
-        </div>
-        <div className="space-y-2">
-          <label htmlFor="service" className="text-sm font-semibold text-slate-700">Service Needed</label>
-          <select 
-            id="service" 
-            name="service"
-            value={formData.service}
-            onChange={handleChange}
-            className="flex h-12 w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 border border-slate-100">
+      <h2 className="text-2xl font-heading font-bold text-slate-900 mb-6">
+        Request a Quote
+      </h2>
+      
+      {isSuccess ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-emerald-50 border border-emerald-200 rounded-lg p-8 text-center"
+        >
+          <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
+          <h3 className="text-lg font-bold text-emerald-900 mb-2">Message Sent!</h3>
+          <p className="text-emerald-700">Thank you for contacting us. We'll be in touch within 24 hours.</p>
+          <Button
+            onClick={() => setIsSuccess(false)}
+            variant="outline"
+            className="mt-6 border-emerald-300 text-emerald-700 hover:bg-emerald-50"
           >
-            <option value="">Select a service...</option>
-            {siteConfig.services.map((s) => (
-              <option key={s.title} value={s.title}>{s.title}</option>
-            ))}
-            <option value="Other">Other / Not Sure</option>
-          </select>
-        </div>
-      </div>
+            Send Another Message
+          </Button>
+        </motion.div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label htmlFor="name" className="text-sm font-medium text-slate-700">
+                Full Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                required
+                id="name"
+                name="name"
+                type="text"
+                placeholder="John Doe"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="phone" className="text-sm font-medium text-slate-700">
+                Phone Number <span className="text-red-500">*</span>
+              </label>
+              <input
+                required
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="(512) 555-0123"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              />
+            </div>
+          </div>
 
-      <div className="space-y-2">
-        <label htmlFor="message" className="text-sm font-semibold text-slate-700">Message *</label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-          className="flex w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-sm ring-offset-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[120px]"
-          placeholder="Tell us about your vehicle and what you're looking for..."
-        />
-      </div>
+          <div className="space-y-2">
+            <label htmlFor="email" className="text-sm font-medium text-slate-700">
+              Email Address <span className="text-red-500">*</span>
+            </label>
+            <input
+              required
+              id="email"
+              name="email"
+              type="email"
+              placeholder="john@example.com"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+            />
+          </div>
 
-      {/* Honeypot */}
-      <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" value={formData._gotcha} onChange={handleChange} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label htmlFor="vehicle" className="text-sm font-medium text-slate-700">
+                Vehicle Make/Model
+              </label>
+              <input
+                id="vehicle"
+                name="vehicle"
+                type="text"
+                placeholder="e.g. 2022 Tesla Model 3"
+                value={formData.vehicle}
+                onChange={handleChange}
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="service" className="text-sm font-medium text-slate-700">
+                Service Interested In
+              </label>
+              <select
+                id="service"
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all bg-white"
+              >
+                <option value="">Select a Service</option>
+                <option value="Ceramic Coating">Ceramic Coating</option>
+                <option value="Paint Protection Film">Paint Protection Film</option>
+                <option value="Window Tinting">Window Tinting</option>
+                <option value="Full Detail">Full Detail Package</option>
+                <option value="Interior Detailing">Interior Detailing</option>
+                <option value="Paint Correction">Paint Correction</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
 
-      {status === "error" && (
-        <div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 p-3 rounded-lg">
-          <AlertCircle className="h-4 w-4" />
-          <span>Something went wrong. Please try again.</span>
-        </div>
+          <div className="space-y-2">
+            <label htmlFor="message" className="text-sm font-medium text-slate-700">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              placeholder="Tell us about your vehicle and what you're looking for..."
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none"
+            />
+          </div>
+
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full md:w-auto"
+            size="lg"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              "Send Request"
+            )}
+          </Button>
+        </form>
       )}
-
-      <Button 
-        type="submit" 
-        size="lg" 
-        className="w-full"
-        disabled={status === "loading"}
-      >
-        {status === "loading" ? (
-          <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
-          </>
-        ) : (
-          "Send Message"
-        )}
-      </Button>
-    </form>
+    </div>
   );
 }
