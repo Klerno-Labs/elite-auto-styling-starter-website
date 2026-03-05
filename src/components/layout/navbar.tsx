@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 import MobileMenu from "./mobile-menu";
 
+import { useState, useEffect } from "react";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
