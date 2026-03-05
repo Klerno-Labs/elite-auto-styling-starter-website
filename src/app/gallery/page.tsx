@@ -1,93 +1,58 @@
-"use client";
-
 import { Metadata } from "next";
 import Image from "next/image";
 import { images } from "@/config/images";
-import SectionWrapper from "@/components/layout/section-wrapper";
-import CtaBand from "@/components/sections/cta-band";
-import { useState } from "react";
+import { useState } from "react"; // Note: Using client logic would be needed for lightbox, using simple grid for server component
 
 export const metadata: Metadata = {
   title: "Gallery | Elite Auto Styling",
-  description: "View our portfolio of transformed vehicles including ceramic coatings, PPF installations, and detailing work.",
+  description: "View our portfolio of automotive detailing, ceramic coating, and PPF projects in Austin.",
 };
 
-// Note: Since this is a static page, we will use a simple client component for the filter/lightbox logic wrapper, 
-// but to keep it simple and robust in one file, we will render a grid directly.
-// For a true "use client" page, we'd separate the state logic, but Next.js 14 allows client components in page.tsx.
-
-"use client";
+// Mock gallery data
+const galleryItems = [
+  { id: 1, type: "Ceramic Coating", vehicle: "Tesla Model 3", src: images["gallery-tesla"], before: null },
+  { id: 2, type: "Paint Correction", vehicle: "Porsche 911", src: images["gallery-after-1"], before: images["gallery-before-1"] },
+  { id: 3, type: "Interior Detail", vehicle: "Range Rover", src: images["service-interior"], before: null },
+  { id: 4, type: "PPF Install", vehicle: "BMW M3", src: images["service-ppf"], before: null },
+  { id: 5, type: "Window Tint", vehicle: "Lexus RX350", src: images["service-tint"], before: null },
+  { id: 6, type: "Full Detail", vehicle: "Mercedes G-Wagon", src: images.hero, before: null },
+];
 
 export default function GalleryPage() {
-  const [filter, setFilter] = useState("all");
-
-  // Extending images config with custom types for gallery items
-  const galleryItems = [
-    { id: 1, src: images.gallery1.src, alt: images.gallery1.alt, category: "exterior", title: "BMW M4 Paint Correction" },
-    { id: 2, src: images.gallery2.src, alt: images.gallery2.alt, category: "ppf", title: "Tesla Model S Full PPF" },
-    { id: 3, src: images.gallery3.src, alt: images.gallery3.alt, category: "interior", title: "Luxury Interior Restoration" },
-    { id: 4, src: images.gallery4.src, alt: images.gallery4.alt, category: "wheels", title: "Wheel & Brake Detailing" },
-    { id: 5, src: "https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=1200&h=800&fit=crop", alt: "Porsche GT3", category: "exterior", title: "Porsche GT3 Ceramic" },
-    { id: 6, src: "https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=1200&h=800&fit=crop", alt: "Ferrari", category: "exterior", title: "Ferrari 488 Detail" },
-  ];
-
-  const filteredItems = filter === "all" 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === filter);
-
   return (
-    <>
-      <section className="bg-slate-900 pt-32 pb-20 text-center">
-        <h1 className="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">
-          Our Work
-        </h1>
-        <p className="text-slate-300 max-w-2xl mx-auto text-lg px-4">
-          A showcase of our recent transformations. From daily drivers to exotic supercars, see the Elite difference.
-        </p>
+    <div className="pt-8 pb-16">
+      <section className="bg-slate-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl sm:text-5xl font-heading font-bold mb-4">Our Work</h1>
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+            Browse our portfolio of transformed vehicles. Every project is treated with the highest level of care.
+          </p>
+        </div>
       </section>
 
-      <SectionWrapper className="bg-white">
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {["all", "exterior", "interior", "ppf", "wheels"].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-full text-sm font-semibold capitalize transition-all ${
-                filter === cat
-                  ? "bg-accent text-white shadow-md"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => (
-            <div key={item.id} className="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-zoom-in">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <span className="text-accent text-xs font-bold uppercase tracking-wider mb-1">
-                  {item.category}
-                </span>
-                <h3 className="text-white font-heading font-bold text-lg">
-                  {item.title}
-                </h3>
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryItems.map((item) => (
+              <div key={item.id} className="group relative aspect-[4/3] overflow-hidden rounded-xl shadow-md">
+                <Image
+                  src={item.src.src}
+                  alt={`${item.type} on ${item.vehicle}`}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <span className="text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">{item.type}</span>
+                  <h3 className="text-white font-heading font-bold text-xl">{item.vehicle}</h3>
+                  {item.before && (
+                    <span className="mt-2 text-xs text-white/80 border border-white/30 px-2 py-1 rounded inline-block">Before/After Available</span>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </SectionWrapper>
-      <CtaBand />
-    </>
+      </section>
+    </div>
   );
 }
