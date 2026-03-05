@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 248 250 252; /* #F8FAFC */
+    --foreground: 2 6 23; /* #020617 */
+    --card: 255 255 255;
+    --card-foreground: 2 6 23;
+    --popover: 255 255 255;
+    --popover-foreground: 2 6 23;
+    --primary: 37 99 235; /* #2563EB */
+    --primary-foreground: 255 255 255;
+    --secondary: 15 23 42; /* #0F172A */
+    --secondary-foreground: 248 250 252;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --accent: 245 158 11; /* #F59E0B */
+    --accent-foreground: 255 255 255;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 37 99 235;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Container Utility */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section Padding */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+}
