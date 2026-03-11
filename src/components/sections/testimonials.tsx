@@ -56,7 +56,7 @@ export default function Testimonials() {
           <span className="ml-2 font-bold text-slate-900">5.0 Rating</span>
         </div>
         <p className="text-slate-600">
-          Don't just take our word for it. Here is what Austin car enthusiasts are saying about Elite Auto Styling.
+          Don&apos;t just take our word for it. Here is what Austin car enthusiasts are saying about Elite Auto Styling.
         </p>
       </div>
 

@@ -28,7 +28,7 @@ export default function Hero() {
           </h1>
           
           <p className="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
-            Austin's premier automotive detailing studio. We specialize in ceramic coatings, paint protection film, and showroom-quality detailing for luxury and exotic vehicles.
+            Austin&apos;s premier automotive detailing studio. We specialize in ceramic coatings, paint protection film, and showroom-quality detailing for luxury and exotic vehicles.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-12">

@@ -31,7 +31,7 @@ export default function ProcessTimeline() {
           Our Simple Process
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto">
-          We've made it easy to get your vehicle looking its best. From booking to pickup, we handle everything.
+          We&apos;ve made it easy to get your vehicle looking its best. From booking to pickup, we handle everything.
         </p>
       </div>
 

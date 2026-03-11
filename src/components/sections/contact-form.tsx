@@ -69,7 +69,7 @@ export default function ContactForm() {
         >
           <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
           <h3 className="text-lg font-bold text-emerald-900 mb-2">Message Sent!</h3>
-          <p className="text-emerald-700">Thank you for contacting us. We'll be in touch within 24 hours.</p>
+          <p className="text-emerald-700">Thank you for contacting us. We&apos;ll be in touch within 24 hours.</p>
           <Button
             onClick={() => setIsSuccess(false)}
             variant="outline"

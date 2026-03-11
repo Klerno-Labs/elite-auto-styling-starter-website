@@ -71,7 +71,7 @@ export default function ContactPage() {
               <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
                 <CheckCircle2 className="w-16 h-16 text-green-600 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-green-900 mb-2">Message Sent!</h3>
-                <p className="text-green-700">Thank you for contacting Elite Auto Styling. We'll be in touch within 24 hours to discuss your vehicle.</p>
+                <p className="text-green-700">Thank you for contacting Elite Auto Styling. We&apos;ll be in touch within 24 hours to discuss your vehicle.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">

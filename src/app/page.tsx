@@ -27,7 +27,7 @@ export default function Home() {
             </h1>
             
             <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-              Elite Auto Styling is Austin's premier destination for Paint Protection Film, Ceramic Coatings, and Showroom Detailing. We treat every vehicle with the precision it deserves.
+              Elite Auto Styling is Austin&apos;s premier destination for Paint Protection Film, Ceramic Coatings, and Showroom Detailing. We treat every vehicle with the precision it deserves.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -89,7 +89,7 @@ export default function Home() {
           <div className="order-1 lg:order-2 space-y-6">
             <span className="text-blue-600 font-bold uppercase tracking-widest text-xs">Why Elite?</span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Standard Detailing Just Isn't Enough for Luxury Vehicles
+              Standard Detailing Just Isn&apos;t Enough for Luxury Vehicles
             </h2>
             <p className="text-slate-600 leading-relaxed">
               Automatic car washes cause swirl marks. Cheap waxes degrade in weeks. At Elite Auto Styling, we use professional-grade compounds, premium ceramic coatings, and meticulous paint correction techniques to restore your vehicle to a flawless finish—and keep it that way.
@@ -197,7 +197,7 @@ export default function Home() {
               location: "Tesla Model 3"
             },
             {
-              quote: "The PPF on my Porsche 911 is flawless. You can't even tell it's there. Worth every penny for peace of mind.",
+              quote: "The PPF on my Porsche 911 is flawless. You can&apos;t even tell it's there. Worth every penny for peace of mind.",
               author: "Jennifer L.",
               location: "Porsche 911"
             },

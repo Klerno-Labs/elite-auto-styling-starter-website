@@ -20,7 +20,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm leading-relaxed text-slate-400">
-              Austin's premier automotive detailing and paint protection studio. We specialize in ceramic coatings, PPF, and window tinting for luxury and exotic vehicles.
+              Austin&apos;s premier automotive detailing and paint protection studio. We specialize in ceramic coatings, PPF, and window tinting for luxury and exotic vehicles.
             </p>
             <div className="flex space-x-4 pt-2">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white transition-colors">

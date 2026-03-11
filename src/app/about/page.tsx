@@ -25,7 +25,7 @@ export default function AboutPage() {
         <div className="relative z-10 text-center px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">Obsessed with Perfection</h1>
           <p className="text-slate-200 text-lg max-w-2xl mx-auto">
-            We don't just clean cars; we restore them to factory perfection and protect them for the future.
+            We don&apos;t just clean cars; we restore them to factory perfection and protect them for the future.
           </p>
         </div>
       </section>
@@ -46,10 +46,10 @@ export default function AboutPage() {
             <span className="text-blue-600 font-bold uppercase tracking-widest text-xs block mb-2">Our Story</span>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Founded on Passion</h2>
             <p className="text-slate-600 leading-relaxed mb-4">
-              Elite Auto Styling was born from a simple observation: Austin's car enthusiasts deserved better than the average detail shop. Too many shops used aggressive buffers that burned paint, cheap wax that washed off in a week, and had no respect for the vehicle's finish.
+              Elite Auto Styling was born from a simple observation: Austin&apos;s car enthusiasts deserved better than the average detail shop. Too many shops used aggressive buffers that burned paint, cheap wax that washed off in a week, and had no respect for the vehicle's finish.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              We set out to change that. By investing in the best training from 3M and XPEL, sourcing the finest ceramic compounds, and adhering to strict "no shortcuts" protocols, we've built a reputation as the go-to shop for owners of Teslas, Porsches, Ferraris, and daily drivers who simply want the best.
+              We set out to change that. By investing in the best training from 3M and XPEL, sourcing the finest ceramic compounds, and adhering to strict "no shortcuts" protocols, we&apos;ve built a reputation as the go-to shop for owners of Teslas, Porsches, Ferraris, and daily drivers who simply want the best.
             </p>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-3">Customer First</h3>
             <p className="text-slate-600">
-              We believe in transparency. You'll always know what we're doing, why we're doing it, and exactly how much it costs.
+              We believe in transparency. You&apos;ll always know what we're doing, why we're doing it, and exactly how much it costs.
             </p>
           </div>
           <div className="p-6">
