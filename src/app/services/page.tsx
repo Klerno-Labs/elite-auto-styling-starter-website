@@ -107,7 +107,7 @@ export default function ServicesPage() {
         <div className="bg-slate-900 rounded-3xl p-12 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Not sure what you need?</h2>
           <p className="text-slate-300 mb-8 max-w-xl mx-auto">
-            Contact us for a free consultation. We&apos;ll assess your vehicle's condition and recommend the best package for your budget and goals.
+            Contact us for a free consultation. We&apos;ll assess your vehicle&apos;s condition and recommend the best package for your budget and goals.
           </p>
           <Link href="/contact">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">

@@ -197,7 +197,7 @@ export default function Home() {
               location: "Tesla Model 3"
             },
             {
-              quote: "The PPF on my Porsche 911 is flawless. You can&apos;t even tell it's there. Worth every penny for peace of mind.",
+              quote: "The PPF on my Porsche 911 is flawless. You can&apos;t even tell it&apos;s there. Worth every penny for peace of mind.",
               author: "Jennifer L.",
               location: "Porsche 911"
             },
