@@ -33,10 +33,10 @@ export default function GalleryPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryItems.map((item) => (
+            {galleryItems.filter(Boolean).map((item) => (
               <div key={item.id} className="group relative aspect-[4/3] overflow-hidden rounded-xl shadow-md">
                 <Image
-                  src={item.src.src}
+                  src={(item.src)?.src ?? "/placeholder.jpg"}
                   alt={`${item.type} on ${item.vehicle}`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
