@@ -27,7 +27,7 @@ export default function BeforeAfterSlider() {
 
   // Using generic high-contrast images for demo
   const beforeImage = "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&h=800&fit=crop"; // Duller interior
-  const afterImage = images.service3.src; // Shiny interior
+  const afterImage = (images?.service3?.src ?? "/placeholder.jpg"); // Shiny interior
 
   return (
     <section className="py-24 bg-white">

@@ -62,8 +62,8 @@ export default function Hero() {
         >
           <div className="absolute inset-0 bg-gradient-to-l from-slate-50 via-transparent to-slate-50 z-10" />
           <Image
-            src={images.hero.src}
-            alt={images.hero.alt}
+            src={(images?.hero?.src ?? "/placeholder.jpg")}
+            alt={(images?.hero?.alt ?? "")}
             fill
             priority
             className="object-cover object-right-top"

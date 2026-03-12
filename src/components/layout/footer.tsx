@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Facebook, Instagram, MapPin, Mail, Phone, Clock, ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
