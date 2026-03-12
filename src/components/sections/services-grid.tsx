@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Shield, Droplets, Wrench, Brush, Sun, Gauge } from "lucide-react";
 import Button from "@/components/ui/button";
 import SectionWrapper from "@/components/layout/section-wrapper";
-import Card from "@/components/ui/card";
 import CardHeader from "@/components/ui/card";
 
 const services = [
