@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 // Mock gallery data
 const galleryItems = [
-  { id: 1, type: "Ceramic Coating", vehicle: "Tesla Model 3", src: images["gallery-tesla"], before: null },
-  { id: 2, type: "Paint Correction", vehicle: "Porsche 911", src: images["gallery-after-1"], before: images["gallery-before-1"] },
+  { id: 1, type: "Ceramic Coating", vehicle: "Tesla Model 3", src: (images as Record<string, string>)["gallery-tesla"], before: null },
+  { id: 2, type: "Paint Correction", vehicle: "Porsche 911", src: (images as Record<string, string>)["gallery-after-1"], before: (images as Record<string, string>)["gallery-before-1"] },
   { id: 3, type: "Interior Detail", vehicle: "Range Rover", src: images["service-interior"], before: null },
   { id: 4, type: "PPF Install", vehicle: "BMW M3", src: images["service-ppf"], before: null },
   { id: 5, type: "Window Tint", vehicle: "Lexus RX350", src: images["service-tint"], before: null },

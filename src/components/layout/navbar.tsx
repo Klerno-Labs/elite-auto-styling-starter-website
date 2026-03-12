@@ -23,7 +23,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener(&quot;scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -93,7 +93,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-label={isOpen ? &quot;Close menu" : "Open menu"}
             className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

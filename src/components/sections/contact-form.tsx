@@ -28,7 +28,7 @@ export default function ContactForm() {
     setIsSuccess(false);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(&quot;/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -72,7 +72,7 @@ export default function ContactForm() {
           <p className="text-emerald-700">Thank you for contacting us. We&apos;ll be in touch within 24 hours.</p>
           <Button
             onClick={() => setIsSuccess(false)}
-            variant="outline"
+            variant="outline&quot;
             className="mt-6 border-emerald-300 text-emerald-700 hover:bg-emerald-50"
           >
             Send Another Message
@@ -196,7 +196,7 @@ export default function ContactForm() {
                 Sending...
               </>
             ) : (
-              "Send Request"
+              &quot;Send Request"
             )}
           </Button>
         </form>

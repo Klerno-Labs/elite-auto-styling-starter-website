@@ -96,7 +96,7 @@ export default function Home() {
             </p>
             <ul className="space-y-4">
               {[
-                "Multi-stage paint correction for a glass-like finish",
+                &quot;Multi-stage paint correction for a glass-like finish",
                 "Industry-leading XPEL and 3M PPF installation",
                 "Hydrophobic ceramic coatings lasting 3-5+ years",
                 "Interior restoration and leather protection"
@@ -192,7 +192,7 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              quote: "Had my Model 3 ceramic coated here and it looks better than the day I bought it. Marcus and his team are perfectionists.",
+              quote: &quot;Had my Model 3 ceramic coated here and it looks better than the day I bought it. Marcus and his team are perfectionists.",
               author: "Tyler R.",
               location: "Tesla Model 3"
             },

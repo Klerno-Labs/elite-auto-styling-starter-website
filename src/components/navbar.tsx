@@ -16,7 +16,7 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener(&quot;scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -90,7 +90,7 @@ export function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden relative z-50 p-2 text-slate-600 hover:text-blue-600 transition-colors"
+              className="lg:hidden relative z-50 p-2 text-slate-600 hover:text-blue-600 transition-colors&quot;
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
