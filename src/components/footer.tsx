@@ -3,7 +3,7 @@ import { Facebook, Instagram, MapPin, Mail, Phone, ArrowUp } from "lucide-react"
 
 export function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: &quot;smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

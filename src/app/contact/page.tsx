@@ -30,7 +30,7 @@ export default function ContactPage() {
     if (formData._gotcha) return; // Bot detected
 
     setIsSubmitting(true);
-    setError(&quot;");
+    setError("");
     setIsSuccess(false);
 
     try {
@@ -170,7 +170,7 @@ export default function ContactPage() {
                 <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" value={formData._gotcha} onChange={handleChange} />
 
                 <Button type="submit" size="lg" disabled={isSubmitting} className="w-full">
-                  {isSubmitting ? <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Sending...</> : &quot;Send Request"}
+                  {isSubmitting ? <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Sending...</> : "Send Request"}
                 </Button>
               </form>
             )}
@@ -236,7 +236,7 @@ export default function ContactPage() {
                 We are conveniently located in North Austin and proudly serve customers in:
               </p>
               <div className="flex flex-wrap gap-2">
-                {[&quot;Austin", "Round Rock", "Cedar Park", "Georgetown", "Westlake", "Pflugerville", "Leander"].map(city => (
+                {["Austin", "Round Rock", "Cedar Park", "Georgetown", "Westlake", "Pflugerville", "Leander"].map(city => (
                   <span key={city} className="bg-white border border-slate-200 px-3 py-1 rounded-md text-xs font-medium text-slate-600">
                     {city}
                   </span>

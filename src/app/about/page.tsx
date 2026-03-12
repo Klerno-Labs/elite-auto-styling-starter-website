@@ -49,7 +49,7 @@ export default function AboutPage() {
               Elite Auto Styling was born from a simple observation: Austin&apos;s car enthusiasts deserved better than the average detail shop. Too many shops used aggressive buffers that burned paint, cheap wax that washed off in a week, and had no respect for the vehicle&apos;s finish.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              We set out to change that. By investing in the best training from 3M and XPEL, sourcing the finest ceramic compounds, and adhering to strict &quot;no shortcuts" protocols, we&apos;ve built a reputation as the go-to shop for owners of Teslas, Porsches, Ferraris, and daily drivers who simply want the best.
+              We set out to change that. By investing in the best training from 3M and XPEL, sourcing the finest ceramic compounds, and adhering to strict "no shortcuts" protocols, we&apos;ve built a reputation as the go-to shop for owners of Teslas, Porsches, Ferraris, and daily drivers who simply want the best.
             </p>
           </div>
         </div>

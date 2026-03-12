@@ -3,7 +3,7 @@ import { Facebook, Instagram, MapPin, Mail, Phone, Clock, ArrowUp } from "lucide
 import { cn } from "@/lib/utils";
 
 export default function Footer() {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: &quot;smooth" });
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-8">

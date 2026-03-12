@@ -78,7 +78,7 @@ export default function Testimonials() {
                   ))}
                 </div>
                 <p className="text-slate-700 italic mb-6 flex-grow leading-relaxed">
-                  &quot;{testimonial.content}"
+                  "{testimonial.content}"
                 </p>
                 <div className="border-t border-slate-200 pt-4">
                   <p className="font-bold text-slate-900">{testimonial.name}</p>
